@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surtout ne touche à rien</title>
+    <title>Ne clique pas</title>
     <style>
         * {
             box-sizing: border-box;
@@ -21,38 +21,46 @@
             text-align: center;
         }
 
-        /* --- AMBIANCE EFFRAYANTE (DEFAUT) --- */
+        /* --- PAGE PRINCIPALE (SOMBRE & EFFRAYANTE) --- */
         body.dark {
-            background-color: #080808;
-            color: #8b0000;
+            background-color: #000000;
+            color: #ff0000;
         }
 
         .dark h1 {
-            font-size: 2.5rem;
-            text-shadow: 0 0 8px #ff0000;
-            letter-spacing: 2px;
+            font-size: 3.5rem;
+            text-shadow: 0 0 15px #ff0000;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
         }
 
-        .dark button {
-            background-color: #1a0000;
-            color: #ff0000;
-            border: 2px solid #8b0000;
-            padding: 20px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
+        /* Style pour le bouton image/GIF */
+        .gif-button {
+            background: none;
+            border: none;
             cursor: pointer;
-            box-shadow: 0 0 15px #ff0000;
-            border-radius: 5px;
-            margin-top: 20px;
+            outline: none;
+            padding: 0;
+            transition: transform 0.2s ease, filter 0.2s ease;
         }
 
-        .dark button:hover {
-            background-color: #ff0000;
-            color: #000;
-            box-shadow: 0 0 30px #ff0000;
+        .gif-button img {
+            width: 160px;
+            height: 160px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 20px #ff0000);
         }
 
-        /* --- AMBIANCE LICORNE / ARC-EN-CIEL --- */
+        .gif-button:hover {
+            transform: scale(1.1);
+        }
+
+        .gif-button:active {
+            transform: scale(0.95);
+        }
+
+        /* --- PAGE SECONDAIRE (LICORNE & ARC-EN-CIEL) --- */
         body.unicorn {
             background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
             background-size: 1800% 1800%;
@@ -100,12 +108,17 @@
 </head>
 <body class="dark">
 
+    <!-- PAGE PRINCIPALE -->
     <div id="scary-content">
-        <h1>N'APPUIE SURTOUT PAS SUR CE BOUTON...</h1>
-        <p>Tu risques de déclencher l'impensable.</p>
-        <button onclick="revealUnicorns()">NE PAS CLIQUER</button>
+        <h1>Ne clique pas</h1>
+        
+        <button class="gif-button" onclick="revealUnicorns()">
+            <!-- Image de bouton rouge animé en GIF -->
+            <img src="https://media.giphy.com/media/l41K3o5TzMantyQFq/giphy.gif" alt="Bouton rouge">
+        </button>
     </div>
 
+    <!-- PAGE LICORNE -->
     <div id="unicorn-content" class="hidden">
         <h1>✨ BIENVENUE AU PAYS DES MERVEILLES ! ✨</h1>
         <div class="unicorn-img">🦄🌈💖⭐</div>
@@ -114,11 +127,9 @@
 
     <script>
         function revealUnicorns() {
-            // Bascule le style du fond
             document.body.classList.remove('dark');
             document.body.classList.add('unicorn');
 
-            // Masque le contenu sombre et affiche le monde licorne
             document.getElementById('scary-content').classList.add('hidden');
             document.getElementById('unicorn-content').classList.remove('hidden');
         }
