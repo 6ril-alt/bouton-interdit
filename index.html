@@ -81,28 +81,13 @@
             animation: bounce 0.6s infinite alternate;
         }
 
-        .unicorn-img {
-            display: none;
-            font-size: 6rem;
-            margin: 20px 0;
-            animation: spin 3s linear infinite;
-        }
-
-        .unicorn .unicorn-img {
-            display: block;
-        }
-
         .hidden {
-            display: none;
+            display: none !important;
         }
 
         @keyframes bounce {
             from { transform: translateY(0); }
             to { transform: translateY(-20px); }
-        }
-
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -117,22 +102,28 @@
             <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnVrYnVranI3dHI0ZHZrZzl5MTVoNXNjbWxucGltOG1uZXA3ZHdkaSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/QLoEZPIvVgff1K2wai/giphy.gif" alt="Bouton rouge">
         </button>
         
-        <!-- BALISE CORRIGÉE ICI (Fermée avec > et taille fixée à 120px) -->
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmIzbHk2eXQ1aXc1M3Q4NHp3NmQ5dW5ubWd4aXZvN2VxaDg0NjB4NiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/f9RGrPdzevzdw503HP/giphy.gif" alt="tete de mort pirate" style="margin-top: 20px; width: 320px; display: block; margin-left: auto; margin-right: auto;">
+        <!-- Tête de mort pirate -->
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmIzbHk2eXQ1aXc1M3Q4NHp3NmQ5dW5ubWd4aXZvN2VxaDg0NjB4NiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/f9RGrPdzevzdw503HP/giphy.gif" alt="tete de mort pirate" style="margin-top: 20px; width: 220px; display: block; margin-left: auto; margin-right: auto;">
     </div>
 
-   <!-- PAGE LICORNE -->
+    <!-- PAGE LICORNE -->
     <div id="unicorn-content" class="hidden">
         <h1>✨ BIENVENUE AU PAYS DES MERVEILLES ! ✨</h1>
         
-        <!-- Conteneur pour l'image et l'ambiance mielleuse -->
-        <div style="position: relative; display: inline-block; margin: 20px 0;">
-            <!-- Remplace l'URL ci-dessous par ton GIF/Image du personnage -->
-            <img src="https://tenor.com/pvoqyNUsleF.gif" alt="Licorne surprise" style="width: 350px; max-width: 90%; border-radius: 20px; box-shadow: 0 0 30px #ff69b4;">
-        </div>
+        <!-- TON GIF DE PERSONNAGE ICI (Remplace le lien entre les guillemets) -->
+        <img src="https://tenor.com/pvoqyNUsleF.gif" alt="Surprise" style="width: 350px; max-width: 90%; border-radius: 20px; box-shadow: 0 0 30px #ff69b4; margin: 20px 0;">
 
         <p style="font-size: 1.5rem; font-weight: bold;">C'est tout doux, tout mielleux et plein d'amour ! 💖✨</p>
     </div>
+
+    <script>
+        function revealUnicorns() {
+            document.body.classList.remove('dark');
+            document.body.classList.add('unicorn');
+
+            document.getElementById('scary-content').classList.add('hidden');
+            document.getElementById('unicorn-content').classList.remove('hidden');
+        }
     </script>
 </body>
 </html>
