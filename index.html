@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surtout ne touche à rien</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            transition: all 0.5s ease-in-out;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+        }
+
+        /* --- AMBIANCE EFFRAYANTE (DEFAUT) --- */
+        body.dark {
+            background-color: #080808;
+            color: #8b0000;
+        }
+
+        .dark h1 {
+            font-size: 2.5rem;
+            text-shadow: 0 0 8px #ff0000;
+            letter-spacing: 2px;
+        }
+
+        .dark button {
+            background-color: #1a0000;
+            color: #ff0000;
+            border: 2px solid #8b0000;
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 15px #ff0000;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .dark button:hover {
+            background-color: #ff0000;
+            color: #000;
+            box-shadow: 0 0 30px #ff0000;
+        }
+
+        /* --- AMBIANCE LICORNE / ARC-EN-CIEL --- */
+        body.unicorn {
+            background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+            background-size: 1800% 1800%;
+            animation: rainbow 6s ease infinite;
+            color: #ffffff;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 82% }
+            50% { background-position: 100% 19% }
+            100% { background-position: 0% 82% }
+        }
+
+        .unicorn h1 {
+            font-size: 3.5rem;
+            text-shadow: 3px 3px 0 #ff69b4, 6px 6px 0 #00ffff;
+            animation: bounce 0.6s infinite alternate;
+        }
+
+        .unicorn-img {
+            display: none;
+            font-size: 6rem;
+            margin: 20px 0;
+            animation: spin 3s linear infinite;
+        }
+
+        .unicorn .unicorn-img {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="dark">
+
+    <div id="scary-content">
+        <h1>N'APPUIE SURTOUT PAS SUR CE BOUTON...</h1>
+        <p>Tu risques de déclencher l'impensable.</p>
+        <button onclick="revealUnicorns()">NE PAS CLIQUER</button>
+    </div>
+
+    <div id="unicorn-content" class="hidden">
+        <h1>✨ BIENVENUE AU PAYS DES MERVEILLES ! ✨</h1>
+        <div class="unicorn-img">🦄🌈💖⭐</div>
+        <p>C'est tout doux, tout mielleux et plein d'amour !</p>
+    </div>
+
+    <script>
+        function revealUnicorns() {
+            // Bascule le style du fond
+            document.body.classList.remove('dark');
+            document.body.classList.add('unicorn');
+
+            // Masque le contenu sombre et affiche le monde licorne
+            document.getElementById('scary-content').classList.add('hidden');
+            document.getElementById('unicorn-content').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
